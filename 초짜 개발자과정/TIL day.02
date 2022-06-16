@@ -1,0 +1,363 @@
+int, double, short, long, float, char 등의 단위를 배웠다. 지역변수를 쓰는 것도 여기서 처음배웠다. 
+코딩을 여러번 할 때마다 느끼지만 이 코드들을 작성하면 내가 어려운 일을 해낸 것 같은 기분이 든다. 사실 쉬운건데;
+처음 해보는 과제는 쉬워보였으나 생각보다 어려웠다. 글을 보고 그대로 코딩을 해내면 된다는 것은 어려운 일이다.
+
+
+
+package koreait.day02;
+
+public class C03_IntegerData {
+
+	public static void main(String[] args) {
+		System.out.println("Byte 정수데이터-----------");
+		System.out.println("메모리 크기: "+ Byte.BYTES + "바이트"); //
+		System.out.println("Byte 정수의 최소값" + Byte.MIN_VALUE);
+		System.out.println("Byte 정수의 최대값" + Byte.MAX_VALUE);
+
+		System.out.println("Short 정수데이터-----------");
+		System.out.println("메모리 크기: "+ Short.BYTES + "바이트"); //
+		System.out.println("Short 정수의 최소값" + Short.MIN_VALUE);
+		System.out.println("Short 정수의 최대값" + Short.MAX_VALUE);
+
+		System.out.println("Integer 정수데이터-----------");
+		System.out.println("메모리 크기: "+ Integer.BYTES + "바이트"); //
+		System.out.println("Integer 정수의 최소값" + Integer.MIN_VALUE);
+		System.out.println("Integer 정수의 최대값" + Integer.MAX_VALUE);
+
+		System.out.println("Long 정수데이터-----------");
+		System.out.println("메모리 크기: "+ Long.BYTES + "바이트"); //
+		System.out.println("Long 정수의 최소값" + Long.MIN_VALUE);
+		System.out.println("Long 정수의 최대값" + Long.MAX_VALUE);
+
+
+		
+	}
+
+}
+
+/* 정수 데이터 기본 형식은  byte, short, int, long 4가지 이며 
+ * 				ㄴ 각각 메모리에 할당받는 크기(바이트 단위)와 그에 따른 값의 표현 범위가 결정됩니다.
+ *              ㄴ 변수를 선언할 때 사용할 키워드(예약어. 용도가 정해진 단어)
+ *  
+ * Byte, Short, Integer, Long 클래스는 정수 데이터 형식를 다루는 속성과 메소드를 갖는 클래스입니다.(Wrapper 래퍼 클래스)
+ *		ㄴ 다음은 위 클래스들의 구성요소인 속성(필드)들 중 변하지 않는값(상수) 입니다. 대체로 대문자로 표기합니다.
+			ㄴ BYTES, MIN_VALUE, MAX_VALUE
+ *	123, 200 은 int 형식입니다.(4byte로 저장)			
+ */
+
+
+package koreait.day02;
+
+public class C04_DoubleData {
+
+	public static void main(String[] args) {
+		
+		
+		System.out.println("Float 실수데이터-----------");
+		System.out.println("메모리 크기: "+ Float.BYTES + "바이트"); 
+		System.out.println("Float 실수의 최소값" + Float.MIN_VALUE);//1.4E-45 = 1.4x 10의 -45승임
+		System.out.println("Float 실수의 최대값" + Float.MAX_VALUE);//3.4028235E38 = 3.4의 10의 38승
+		
+		System.out.println("Double 실수데이터-----------");
+		System.out.println("메모리 크기: "+ Double.BYTES + "바이트"); 
+		System.out.println("Double 실수의 최소값" + Double.MIN_VALUE);//4.9E-324 = 4.9 x 10의 -324승
+		System.out.println("Double 실수의 최대값" + Double.MAX_VALUE);//1.7976931348623157E308= 1.79의 10으ㅢ 308승
+
+	}
+
+}
+/* 실수데이터는 컴퓨터 구조에서 부동소수점 형식으로 다룸. 
+ * ex) 1.23x 10의 23승 에서 1.23(가수)과 23(지수)을 각각 어떤 크기만큼 할당하냐에 따라 값의 표현범위와 정밀도가 결정됨.
+ * 값의 표현범위와 정밀도(가수부 소수점이 float는 7자리, double은 16자리)가 결정됨.
+ * 실수 데이터 기본 형식 : float ,double 
+ * 	   Wrapper 클래스는 Float, Double
+ * 		1.234 리터럴은 double 형식입니다.	
+ */
+
+
+package koreait.day02;
+
+public class C05_IntegerVar {
+
+	public static void main(String[] args) { // main 메소드 시작- 지역변수 는 이 메인 메소드 안에서만 선언됨.
+		/* 1. main 메소드 안에서만 사용하는 지역변수를 선언합니다.
+		 * 2. 기본형 (primitive) 데이터 타입 : 정수형식 byte, short, int, long 키워드(역할이 정해진 단어)
+		 */
+		byte n1; // byte 형식의 데이터를 저장할 공간. 이름 n1
+		short n2;
+		int n3;
+		long n4;
+		
+		byte m1= 100;
+		short m2= 100;
+		int m3= 100;
+		long m4= 100;
+		
+		int currentNo; //변수명은 실제저장되는 값이 파악될 수 있는 단어로 만듦.
+
+		//System.out.println(n1); - 오류남. 값이 없는 변수기 때문.
+		System.out.println(m1);
+
+		//값의 대입(=)
+		n1= 123; // 대입문: 오른쪽 값/수식/변수가 왼쪽 변수로 대입. 123은 4바이트 리터럴임. byte나 short는 별도 리터럴표기방식이 없음. 자동으로 값이 안넘치면  1, 2바이트로 줄여서 int 값을 저장함
+//		n1= 999; //오류 이유: 127보다 큰 값
+		n2= 29999;
+//		n2= -40000; // 오류 이유: -32768보다 작은 값
+		n3= 123456789;
+//		n3= 123456789123; //이유: 2147483647보다 큰 값
+//		n4= 1234567890123; //이유 : 1234567890123 리터럴은 int 리터럴이므로 표현오류임
+		n4= 123; // 이건 int리터럴 값으로 표현이 가능하기 때문에 오류가 안생기는 거임.
+		n4= 1234567890123L; // long 리터럴 표시는 L또는 l을 마지막에 써야 함.
+	
+		System.out.println("변수n1 = "+ n1);
+		System.out.println("변수n2 = "+ n2);
+		System.out.printf("변수 %s = %d\n", "n3", n3);
+		System.out.printf("변수 %s = %d\n","n4",n4);
+		
+	} //main 메소드 끝
+    //대입문 또는 리터럴 표시할 때의 값의 범위가 넘어가는 것을 overflow(오버플로우)라고 함.
+}
+/*변수 : 메모리에 저장된 값 중에서 변경할 수 있는 데이터를 말합니다.
+ *    변수는 프로그램이 실행되는 동안에 임시로 사용하는 메모리 공간입니다.
+ *	    데이터가 저장된 메모리에 접근하기 위해서 변수명(식별자)을 부여합니다.
+ *    변수 선언한다(변수명과 데이터 형식을 지정하는 것) -> 메모리에 공간 할당 됩니다.
+ *    조사내용: 변수명을 정할 때의 규칙
+ */
+
+package koreait.day02;
+
+public class C06_DoubleVar {
+
+	public static void main(String[] args) {
+		/* 1. main 메소드 안에서만 사용하는 지역변수를 선언합니다.
+		 * 2. 기본형 (primitive) 데이터 타입 : 실수형식 float,double 키워드(역할이 정해진 단어)
+		 */
+		
+		//변수선언
+		float p1;
+		double p2;
+		
+		//변수선언과 초기화
+		
+		float q1= 3.14f; //3.14는 double 형식의 리터럴. 8바이트를 4바이트에 대입하는 것이 자동으로 되지 않음. 실수는 정밀도가 필요하기에.
+		                 //  ㄴ float 리터럴은 f로 표시함
+                  	     //float q1= 3.14 는 오류임
+		double q2= 3.14;
+		
+		
+		
+		
+	}
+
+}
+
+
+
+package koreait.day02;
+
+public class C07_CastingTest {
+//참고 : 자바프로그램은 파일명과 클래스명이 같아야 함.
+	public static void main(String[] args) {
+		// 대입문: 오른쪽 값(리터럴)/수식/변수가 왼쪽 변수로 대입.
+		                    //수식에 사용되는 연산
+		                    //산술연산(+-*/ 등, %나눗셈 나머지) ,
+		                    //관계연산(== 동등, !=같지 않음, <, >, <=, >=), 
+		                    //논리연산(%%and, ||or, !not)
+		//참교 : ++, --, +=, -=, *=, /= 과 같은 증감연산자, 축약연산자 진도 예정
+		
+		//정수형식 연산은 보통int를 씀
+		
+		int a= 123, b= 13; 
+		double c=10.34;  //실수형을 정수형으로 변환한다면 소수점 아래 버림.
+		
+		//연산에 사용되는 피연산자(현재 123과 13)가 모두 정수이면 결과는 정수임
+		// 연산에 사용되는 피연산자중 하나가 정수, 하나가 실수라면 결과는 실수임
+		 //-> 연산 결과를 변수에 저장할 때 데이터 형식을 고려함.
+		
+		 int isum;
+		 double dsum;
+		
+		isum= a+b;
+		dsum= a+c;
+		
+		System.out.println("a+b= " + isum);
+		System.out.println("a+c= " + dsum);
+
+//		isum= a+c;// 결과가 실수이므로 정수형식 변수에 저장이 불가능함: 오류
+        // 꼭 해야한다면 강제로 형변환(casting)을 하면 됨.
+		isum= a+ (int)c;// c변수의 실수값을 정수로 변환(소숫점 아래 버림)
+		
+		System.out.println("a+(int)c= " + isum);
+
+		b=10;
+		System.out.println("a/b="+(a/b)); //정수끼리 나누면 결과 정수
+		System.out.println("a/b="+(a%b)); //정수끼리 나누기의 나머지
+		
+		System.out.printf("%d / %d = %d\n", a, b, a/b);
+		System.out.printf("%d %% %d = %d\n", a, b, a%b);
+		
+//		강제 형변환(캐스팅) 예시: 정수끼리 나눗셈결과를 실수로 구하는 처리조건일 때
+//		-> 정수 1개를 실수로 변환
+		
+		System.out.printf("%d / %d = %f\n", a, b, (double)a/b); //실수형식문자 %f, 기본 소수점 이하 6자리
+		System.out.printf("%d / %d = %.2f\n", a, b, (double)a/b);//%.숫자f 하면 소숫점 숫자자리 까지 나옴
+
+		
+		double test = 12.3456789123456789;
+		System.out.println("test="+test);
+		System.out.println("test="+test);
+
+		
+	}
+
+}
+
+
+
+package koreait.day02;
+
+public class C08_test {
+
+	public static void main(String[] args) {
+		
+
+		int width= 23;
+		int heigth=19;
+		
+		System.out.printf("가로 %d * 세로 %d = 넓이 %d㎠ \n", width, heigth, width*heigth);
+		
+		double radius=23.230;
+		int a=2;
+		double pi= 3.14;
+		System.out.printf("둘레 %.3f㎠  = %d * %.2f * %.3f \n ", a*pi*radius, a, pi, radius);
+		System.out.printf("넓이 %.3f㎠  = %.2f * %.3f * %.3f \n", pi*radius*radius, pi, radius, radius);
+		
+		
+		
+	}
+
+}
+
+
+package koreait.day02;
+
+public class C08_test2 {
+//작성자 : 이민호
+	public static void main(String[] args) {
+		
+		System.out.println("\n[[사각형 도형의 넓이 구하기]]\n");
+
+		int width= 23;
+		int heigth=19;
+		int box_area= width*heigth;
+	
+		System.out.println("가로 : "+ width + "㎝");
+		System.out.println("세로 : "+ heigth + "㎝");
+		System.out.println("넓이를 구했습니다 : "+ box_area + "㎠");
+
+		
+		System.out.println("\n[[원 도형의 넓이와 둘레 구하기]]\n");
+		double radius=23.230;
+		final double pi= 3.14;
+		double round=2 + pi * radius;
+		double circle_area = pi*radius*radius;
+		
+		System.out.printf("반지름 : %.3f ㎝ \n", radius);
+		System.out.printf("둘레를 구했습니다 : %.3f ㎝ \n", round );
+		System.out.printf("넓이를 구했습니다 : %.3f ㎠ \n", circle_area);
+
+		
+		// final test
+		// 변수 선언 앞에 final 키워드를 붙이면 값을 변경하지 못함.
+		
+		 final int test = 123; //test를 변경하지 못하게 함. 값을 변경 못하는 상수임.
+		 System.out.println("test="+test);
+	}
+
+}
+
+
+
+package koreait.day02;
+
+public class C09_Character {
+
+	public static void main(String[] args) {
+		
+		char c1= 'a';
+		char c2= 97;
+
+	//둘다 a로 출력
+		System.out.println("c1= "+c1);
+		System.out.println("c2= "+c2);
+		
+		
+	//문자코드 정수값 출력 -> int로 캐스팅 :둘다 97로 출력	
+	    System.out.printf("c1= %d\n",(int)c1);
+	    System.out.printf("c2= %d\n",(int)c2);//char형은 %d로 출력이 불가능함
+	    
+	    //문자코드 정수값을 출력하고싶다면 int로 캐스팅하면 됨
+	    c1= (char)(c1+1); // 덧셈연산 가능. 연산결과 대입할 때는 casting 필요
+	    System.out.println("c1= "+ c1);
+	    
+	    
+	    c1++; // ++dustksdms c1= c1+1, char형에서는 casting도 함
+	    System.out.println("c1= "+ c1);
+	    
+
+	    //한글문자 테스트 : 한글문자코드는 10진수 값을 44032~55203, 16진수(2진수) ac00~d7a3
+	    char h1= '가';
+	    char h2= 44032;
+	    char h3 = '\uac00';   // \\u는 16진수 유니코드, ac00은 16진수 '가' 값
+
+	    System.out.println("h1= "+h1);
+	    System.out.println("h2= "+h2);
+	    System.out.println("h3= "+h3);
+	    
+	    
+		System.out.printf("h1= %d\n",(int)h1);
+		System.out.printf("h2= %d\n",(int)h2);
+		System.out.printf("h3= %d\n",(int)h3);
+		
+		h1++;
+		System.out.println("h1= "+h1);
+		
+		h1++;
+		System.out.println("h1= "+h1);
+		
+		//한글 마지막문자
+		char h4= 55203; //10진수 표현방법
+		char h5= '\ud7a3'; // 16진수 표현, 힣
+		System.out.println("h4= "+h4);
+		System.out.println("h5= "+h5);
+		
+		h4++; // 해당되는 모양의 문자가 없음. ?표시
+		System.out.println("h4= "+h4);
+		
+		h5--;//힢
+		System.out.println("h5= "+h5);
+		System.out.println('H'+'e'+'l'+'l'+'o'); //각 문자 코드의 값을 더한 결과가 나옴
+		// hello 를 출력하고싶다면 char의 배열로 처리해야 함.
+
+	
+	}
+
+	//char이 모여 한줄로 나란히 세운다면 문자열이 됨.
+	
+}
+
+/*
+ * 데이터 기본형식 : 문자형 char
+ * 문자데이터를 저장하는 2 바이트 형식. 정수값 0~65535 범위 저장도 가능.
+ * 컴퓨터에서 다루는 문자는 문자코드로 처리되는데 코드는 정수값임
+ * 문자데이터는 ''기호를 사용. ('' 안에는 문자 1개만 가능)
+ * 
+ * 영문, 숫자, 특수문자는 ASCII코드로 표현됨.
+ * 영문자, 숫자, 특수문자 외의 다국어 문자는 문자를 처리하는 인코딩방식에 따라 문자코드 값이 다름.
+ * 국제화 인코딩으로 utf-8방식을 많이 사용함.
+ * 
+ * 
+ * 간: ㄱ ㅏ ㄴ (초성, 중성, 종성 각각에 코드값으로 조합하는 조합형)
+ * 
+ * utf-8 = 한글에서 나올 수 있는 모든 초성 중성 종성의 모든 표현을 만들어 각각 코드값을 부여하는 완성형
+ */
