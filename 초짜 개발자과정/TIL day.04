@@ -1,0 +1,432 @@
+if와 elseif를 써서 직접 코딩을 해본 첫 날이었던 것으로 기억한다.. 
+내 코드는 너무나도 더러웠고, 대체 어디가 마지막 중괄호인지조차 기억할 수 없는 막장의 끝을 달린 코드였던걸로 기억한다.
+이 날 친한 동생은 내게 ctrl shift f 로 줄정리가 가능하다는 것을 처음 알려주었고, 내 코드는 드디어 사람다워지기 시작했다.
+
+불린을 처음 사용해본 날이었다. 나는 내 답도 모르는데 컴퓨터는 답을 알고있다. 기분이 좋지 않았다.
+개발자 동생이 내게 boolean의 활용이라면서 같은 문제를 다른 방식으로 해 보내줬다. 아래 21번의 채호가 적혀있는 글은 이 동생의 코딩이다.
+개발자 동생이 있다는 건 든든한 일이다. 빡치는 알 수 없는 문제들도 물어보면 답이 나온다.
+
+
+package koreait.day04;
+
+public class C17_StringTest {
+
+	public static void main(String[] args) {
+
+		String name = "kim"; // 참조형 변수(클래스 타입)
+		String name2 = "kim";
+		String name3 = "Lee";
+		String name4 = new String("kim");
+
+		System.out.println("name == name2 참조위치?" + (name == name2));
+		System.out.println("name == name4 참조위치?" + (name == name4));
+		System.out.println("name2 == name4 참조위치?" + (name2 == name4));
+
+		name2 = "son";
+		System.out.println("name == name2 참조위치?" + (name == name2));
+
+		System.out.println("name=" + name);
+		System.out.println("name2=" + name2);
+		System.out.printf("name3= %s\n", name3);
+		System.out.printf("name4= %s\n", name4);
+
+	}
+
+}
+/*
+ * 문자열 : 기호 "" 를 사용하면 문자열임 '자바'에서는 기본형 데이터가 아니고 String 클래스타입으로 사용함. ㄴ 필드, 메소드
+ * 이용하여 문자열 기능 사용
+ * 
+ */
+
+
+package koreait.day04;
+
+import java.util.Scanner;
+
+public class C18_ReviewEX {
+
+	public static void main(String[] args) {
+
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("[[성적 집계 : 평균과 총점 구하기]]");
+		System.out.println("성적 입력하세요.");
+
+		String best; //특기과목명 저장할 변수
+		int korean;
+		int english;
+		int science;
+		int all;
+		double aver;
+		int total;
+
+		System.out.print("국어->");
+		korean= sc.nextInt();
+		System.out.print("영어->");
+		english= sc.nextInt();
+		System.out.print("과학->");
+		science= sc.nextInt();
+		
+		all= 3;
+		total= korean + english + science;
+		aver= (korean + english + science)/3;
+		
+		
+		
+		System.out.println("\n>>처리되었습니다.");
+		System.out.println("총점 :"+total);
+		System.out.printf("평균 : %.2f , 과목 수 : %d", aver, all);
+		
+	 if(korean>english) { best= "국어" ;
+		 if(korean<science) best="과학";
+	 }
+	 
+	 
+	 else best= "영어"; 
+		 {
+		 
+		 if(english<science) best= "과학";
+		 }
+		 
+		 
+		 System.out.printf("이 학생의 특기과목은 . %s . 입니다.",best);
+		 
+		
+		
+		sc.close();
+		
+	}
+
+}
+
+
+package koreait.day04;
+
+public class C19_MethodTest {
+//main메소드 : 실행의 시작점. 프로그램 실행을 위해 꼭 있어야 할 메소드. static
+	public static void main(String[] args) {
+		
+		System.out.println("메소드를 직접 정의해서 사용해 봅니다");
+		System.out.println("프로그램은 main 메소드의 명령문을 순서대로 실행하고 중간에 메소드 호출을 만나면 메소드가 정의된 실행을 위해");
+		System.out.println("제어를 이동합니다. 메소드 실행이 종료되면 다시 main 메소드로 제어가 돌아옵니다.");
+		System.out.println("1.");
+				methodA(); //메소드 호출(실행). 필요할 때 호출함.
+		System.out.println("2.");
+				methodB(11,33);// **11, 33은 메소드 실행에 필요한 인자
+				methodB(929,111);
+		System.out.println("3.");
+				methodc(929,123.4);			
+				methodc(929,121);			//자동캐스팅( 형변환)
+		System.out.println("4.");
+				methodD(); //반환값이 있는 메소드지만 main 메소드에서 변환값을 저장하지 않음.		
+				System.out.println("return= "+ methodD()); //반환값을 받아서 출력하는 예시.
+				int temp= methodD();	// 반환값을 받아서 변수에 저장하는 예시
+				System.out.println("return="+ temp);
+				System.out.println("5.");
+				
+				double result = methodE(21,111.1);
+				methodE(21,111.1); //반환값이 있는 메소드지만 main 메소드에서 변환값을 저장하지 않음.		
+				System.out.println("return= "+ result);
+	
+				
+				System.out.println("6.");
+				System.out.println(methodF('i',4));
+				
+				char ch= 'a';
+				int val= 3;
+				ch= methodF(ch,val); //메소드 인자로 변수에 저장된 값 전달
+				System.out.println("return= "+ch);
+				
+	}
+		/*String 클래스의 메소드를 이해하기 위해 먼저 메소드의 구조 연습
+		* 
+		* 
+		* 메소드의 주요 요소 : 반환값, 인자(argument)또는 매개변수(parameter), 메소드 이름, public 또는 static 등의 설정  
+		*  ㄴ 반환값 : 메소드 실행 완료되면 얻어지는 결과값
+		*  ㄴ 인자: 메소드 실행을 위해 필요한 데이터(형식과 변수명 선언 필요)- 인자의 갯수와 형식은 다양함.
+		*  ㄴ 메소드 이름: 식별자
+		*  ㄴ public : 접근한정자, static : 정적 요소
+
+		*/
+		
+		
+		//static인 main에서 실행할 메소드는 동일하게  static이어야 합니다.
+	//메소드 선언(정의)
+	public static void methodA() {
+			System.out.println("##첫번째 메소드 정의 연습입니다.##");
+		}
+	public static void methodB(int a, int b) { //**int a, int b 는 인자값을 전달받는 매개변수(지역변수)
+		System.out.println("## 두번쨰 메소드 정의 연습입니다. ##");
+		System.out.println("전달받은 값 a= " +a +", b= "+b);
+	}
+		
+	
+	public static void methodc(int a, double b) { 
+		System.out.println("## 세번쨰 메소드 정의 연습입니다. ##");
+		System.out.println("전달받은 값 a= " +a +", b= "+b);
+	}
+		
+	public static int methodD() {	//반환값이 있는 형식 : 반환값은 int 데이터, 반드시 return이 필요함
+		System.out.println("##네번째 메소드 정의 연습입니다. ##");
+		
+		return 999;
+	}
+	
+	public static double methodE(int a, double b) {	//반환값이 있는 형식 : 반환값은 int 데이터, 반드시 return이 필요함
+			System.out.println("##다섯번째 메소드 정의 연습입니다. ##");
+			
+			return a+b;
+	
+			
+			
+	}
+	
+	public static char methodF(char ch, int size) {
+		System.out.println("## 어섯번쨰 메소드 정의 연습입니다.##");
+		
+		return (char)(ch+size); //인자로 전달받은 값으로 실행하고 처리결과 리턴
+	}
+	
+	
+	}
+	
+	
+
+
+package koreait.day04;
+
+public class C20_StringMethod {
+
+	public static void main(String[] args) {
+		
+		String message = "hello~"; // String 의 패키지는 java.lang. (기본 패키지 클래스)
+		
+		//string 클래스의 메소드는 많음. 다 외우고 사용하는 것이 아닌 메소드의 이름, 인자, 리턴형식을 참조해서 사용함. 
+//		message.length(); //public int length() : 길이
+//		message.charAt(0); //public char charAt(int index)
+		
+//		message.contentEquals("Hello~"); //public boolean contentEquals(CharSequence cs) , object는 모든 타입
+										// message가 String 타입이므로 Object는 String으로 해석함.
+		
+		int len = message.length();
+		char temp = message.charAt(3); // 0부터 시작해서 0 1 2 3 번문자가 무엇인지 return
+		boolean isState = message.equals("Hello~");  // 문자열이 같은지 비교.
+		
+		System.out.println("Length() = " + len);
+		System.out.println("charAt(3) = " + temp);
+		System.out.println("equals(\"Hello~\") = " + isState);
+		
+		
+		//리턴값 형식은?
+		message.indexOf('e'); //public int indexOf(int ch)
+		message.indexOf("lo"); //public int indexOf(int ch)
+		
+		message.substring(2); //public String substring(int beginIndex)
+		message.substring(2,4); //public String substring(int beginIndex)
+		
+		message.replace("11","*@"); //public String replace(CharSequence target, CharSequence replacement)
+// 메소드 오버로딩(overloading) : 메소드 이름과 리턴 형식은 같고 인자 값의 갯수와 형식이 다르게 정의된 것.
+		
+
+		System.out.println("indexOf('e'=)=" + message.indexOf('e')); //1번위치
+		System.out.println("indexOf(\"lo\"=)"+ message.indexOf("lo"));//3번위치
+		System.out.println("indexOf(\"ol\"=)"+ message.indexOf("ol"));//-1 : 찾는 문자열이 없을 때
+		String test = "hello~hello~";
+		System.out.println("test.indexOf(\"lo\"=)"+ test.indexOf("lo"));
+		System.out.println("test.lastindexOf(\"lo\"=)"+ test.lastIndexOf("lo"));
+
+		System.out.println("substring(2)=" + message.substring(2));//부분추출 : llo
+		System.out.println("substring(2,4)"+ message.substring(2,4));//ll, 2번부터 2개(4-2)
+		System.out.println("replace(\"ll\",\"*@\") ="+ message.replace("ll","*@"));//치환:he*@o~
+		System.out.println("startsWith(\"H\")="+ message.startsWith("H"));// H로 시작하는가
+		System.out.println("endsWith(\"~\")=" + message.endsWith("~"));// ~로 끝나는가
+		
+
+	}
+
+}
+
+
+package koreait.day04;
+//채호`s 선물
+import java.util.Scanner;
+
+public class C21_ExBoolean {
+	public static boolean CheckValid(String email) {
+		if (email.indexOf("@")==-1) {
+		System.out.println("@는 아이디 다음 들어가야 합니다");
+			return false;
+		}
+		
+		int firstAt= email.indexOf("@");
+		int secondAt= email.lastIndexOf("@");
+		
+		if (firstAt != secondAt) { 
+			System.out.println("@는 한번만 들어갈 수 있습니다");
+			return false; 
+		}
+			
+		if (!email.substring(firstAt+1).equals("gmail.com")) {
+			System.out.println("도메인은 gmail.com이어야 합니다");
+			return false;
+			}
+		
+		if (email.substring(0, firstAt).length() < 6) {
+			System.out.println("아이디는 6글자 이상이어야 합니다");
+			return false;
+		}
+		
+		int pIdx = email.indexOf('%');
+		int dIdx = email.indexOf('$');
+		if (pIdx != -1 || dIdx != -1) {
+			System.out.println("$ 혹은 % 은(는) 들어갈 수 없습니다");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static void main(String[] args) {
+		boolean isValid = false;
+		Scanner sc= new Scanner(System.in);
+		
+		String email;
+		do {System.out.print("이메일을 입력해주세요 >>> ");
+			email= sc.nextLine();
+		
+		isValid= CheckValid(email);}
+		while(!isValid);
+		
+		System.out.println("isValid? :" + isValid);
+
+		sc.close();
+	}
+
+}
+
+
+package koreait.day04;
+
+import java.util.Scanner;
+
+public class C21_StringEx {
+//작성자 : 이민호
+	
+	public static void main(String[] args) {
+
+
+		/*  구글 이메일 계정을 체크하는 기능 구현 
+		 *  1. @ 기호가 1개 포함되어야 합니다.	(메시지 : 이메일 형식이 아닙니다.)
+		 *  		ㄴ indexof 가 -1이 아니고 indexof 와 lastindexof 가 같은 값인가?
+		 *  
+		 *  2. 1번이 참일 때 @ 뒤에는 gmail.com 이어야 합니다. (메시지 : 도메인 이름이 틀립니다.)
+		 *  		ㄴ '@' 의 indexof 를 구해서 그 뒤부터 끝까지 substring 추출한 문자열을 equals 비교
+		 *  
+		 *  3. 2번이 참일 떄 @ 앞까지의 문자열(계정이름)만 추출합니다.
+		 *  		ㄴ '@' 의 indexof 를 구해서 처음 부터 '@' 이전 까지의 문자열 substring 저장
+		 *  
+		 *  4. 3번의 계정이름은 6글자 이상이어야 합니다.
+		 *  		ㄴ 3번의 문자열이 length() 값 6인지 비교
+		 *  
+		 *  5. 3번의 계정이름에는 특수기호 $,%가 포함되면 안됩니다. 
+		 *   		ㄴ indexof('$') , indexof('%') 가 모두 -1이 아니면 허용안하는 기호 포함
+		 */
+
+
+		
+		Scanner sc= new Scanner(System.in);
+		String email;
+		boolean isValid= true;
+
+		System.out.println("사용할 이메일을 입력하세요. >>>");
+		email = sc.nextLine(); //키보드 입력을 문자열로 처리      입력한 email이 처리조건 1, 2, 4, 5에 해당하지 않으면 메시지 출력하고 isVaild변수를 false로 함.-> isValid출력
+	
+		
+		
+		int firstat= email.indexOf("@");
+		int lastat= email.lastIndexOf("@");
+
+		String domain;
+		String name;
+
+		
+		if((firstat==lastat)&&(firstat!= -1)) {
+			domain= email.substring(firstat+1, email.length());
+			name= email.substring(0,firstat);
+			
+		 if(domain.equals("gmail.com")){
+			if(name.length()>=6) {
+										
+				if(name.indexOf('%')!=-1) {System.out.println("계정 명엔 %가 들어갈 수 없습니다"); isValid= false;}
+			
+
+				else if(name.indexOf('$')!=-1) { System.out.println("계정 명엔 $ 들어갈 수 없습니다"); isValid= false;}
+
+
+				else  System.out.println("계정 명은 " + name + "   @gmail.com 입니다");
+			}
+				else {System.out.println("계정명이 5글자 이하입니다"); 	isValid= false;}
+			}
+		else {System.out.println("도메인 이름이 틀립니다"); isValid= false;}
+		}
+		else {System.out.println("이메일 형식이 아닙니다"); isValid= false;}
+
+		System.out.println(isValid);
+		
+		sc.close();
+	}
+
+		
+	
+}
+
+
+package koreait.day04;
+
+import java.util.Scanner;
+
+public class C21_StringExDap {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		String email;
+		boolean isValid = true;
+
+		System.out.print("사용할 이메일 입력하세요. >>> ");
+		email = sc.nextLine(); // 키보드 입력을 문자열로 처리합니다.
+		int firstat = email.indexOf('@');
+		String account, domain;
+		if(firstat != -1 && firstat == email.lastIndexOf('@')) {
+			account = email.substring(0, firstat);
+			domain = email.substring(firstat+1, email.length());
+			System.out.println(domain);
+			System.out.println(account);
+			if(domain.equals("gmail.com")) {
+				if(account.length() >=6) {
+					if(!(account.indexOf('$')== -1 && account.indexOf('%')==-1)) {
+						System.out.println("오류 : $,%는 사용할 수 없는 기호입니다.");
+						isValid=false;
+					}
+					
+				}else {
+					System.out.println("오류 :계정이름은 6글자 이상이어야 합니다.");
+					isValid=false;
+				}
+				
+			}else {
+				isValid=false;
+				System.out.println("오류 :도메인 이름이 틀립니다.");
+			}
+			
+		}else {
+			System.out.println("오류 :올바른 이메일 형식이 아닙니다.");
+			isValid = false;
+		}
+		
+		System.out.println(isValid);
+
+	}
+
+}
