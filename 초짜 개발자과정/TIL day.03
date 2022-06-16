@@ -1,0 +1,465 @@
+Scanner sc= new Scanner(System.in);이라는 키보드 입력 명령어에 대해 알게 되었다. 제일 맘에 드는 명령어이다. 내 입력을 받아서 출력을 해준다니.
+2주가 지난 시점인 지금도 제일 좋아하는 명령어 단 한개만 꼽으라면 이걸 꼽을 것 같다.
+if와 elseif, else에 대해 배웠다. 이걸 셋째날 배웠다는게 이해가 안될정도로 어려운 내용이다.
+switch역시 마찬가지였다... if와 elseif를 쓰다보니 switch를 배웠다는 사실마저도 잊어버릴 뻔 했다.
+switch를 사용하는것을 좀 더 익힐 필요가 있어보인다.
+
+
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C08_KeyInputEx {
+//작성자 : 이민호
+	public static void main(String[] args) {
+
+		Scanner sc= new Scanner(System.in);
+
+		
+		
+		System.out.println("\n[[사각형 도형의 넓이 구하기]]\n");
+
+		int width;
+		System.out.print("너비를 입력하세요 ->"); //입력메세지
+		width= sc.nextInt();
+		
+		int heigth;
+		System.out.print("높이를 입력하세요 ->"); //입력메세지
+		heigth= sc.nextInt();
+
+		int box_area= width*heigth;
+	
+		System.out.println("가로 : "+ width + "㎝");
+		System.out.println("세로 : "+ heigth + "㎝");
+		System.out.println("넓이를 구했습니다 : "+ box_area + "㎠");
+
+		
+		System.out.println("\n[[원 도형의 넓이와 둘레 구하기]]\n");
+		
+		double radius;
+		System.out.print("반지름을 입력하세요 ->"); //입력메세지
+		radius= sc.nextDouble();
+		
+		final double pi= 3.14;
+		double round=2 * pi * radius;
+		double circle_area = pi*radius*radius;
+		
+		System.out.printf("반지름 : %.3f ㎝ \n", radius);
+		System.out.printf("둘레를 구했습니다 : %.3f ㎝ \n", round );
+		System.out.printf("넓이를 구했습니다 : %.3f ㎠ \n", circle_area);
+
+		sc.close(); //키보드(표준입력장치) 자원사용 해제
+	}
+
+}
+
+
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C10_KeyInput {
+
+	public static void main(String[] args) {
+		//sc는 변수명임. 기본형 변수가 아닌 클래스 타입의 변수임-> 참조형 변수
+//            ㄴ new 연산으로 만드는 객체의 클래스 이름과 같은 이름으로 변수를 선언함.
+		
+		
+		
+		Scanner sc= new Scanner(System.in); //키보드 입력을 위한 기본적 준비.(변수 선언)
+		
+		int data;
+		
+	    System.out.print("정수값 입력하세요 ->"); //입력메세지
+		data= sc.nextInt(); // 사용자로부터 키보드 입력받고 그 값을 정수로 변환하여 data 변수에 저장.
+		//사용자가 숫자만 입력하지 않았을 때는 정수로 변환하지 못하고 오류가 발생합니다.
+		
+		System.out.println("입력된 값은 "+ data + " 입니다.");
+				
+		double point;
+		System.out.print("실수값 입력하세요 ->");
+		
+		point = sc.nextDouble();
+		System.out.println("입력된 값은 " + point + " 입니다");
+		
+		sc.close();
+
+	}
+
+}
+
+/*
+ * 	표준 출력 : System.out (out은 system클래스의 정적인 필드)
+ *                       - 메소드인 println()을 가짐
+ *  표준 입력 : System.in(in은 system클래스의 정적인 필드)
+ *  				       -> Scanner 클래스를 이용해서 입력값을 특정 기본형식으로 변환시켜는 기능 사용.
+ * 						   -> 기본 패키지의 클래스가  아니므로 import 가 필요합니다.	
+ * 
+ */
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C11_Boolean {
+
+	public static void main(String[] args) {
+		
+		boolean result; 
+		
+		result= 10>5;
+		System.out.println("10>5결과 :"+ result);
+		
+		System.out.println("9 != 9 결과 : " + (9!=9));
+		System.out.println("9 == 9 결과 : " + (9==9));
+		
+		
+		System.out.println("논리연산 결과 확인하기 : and");
+		System.out.println(" true and true = " + (true && true));
+		System.out.println(" true and false = " + (true && false));
+		System.out.println(" false and true = " + (false && true)); // 데드코드인 이유= 아래 2개의 논리식은 첫째 값이 거짓이기때문에 두번쨰 값은 의미 없다는 말임.
+		System.out.println(" false and false = " + (false && false));
+		
+		System.out.println("논리연산 결과 확인하기 : or");
+		System.out.println(" true or true = " + (true || true));
+		System.out.println(" true or false = " + (true || false));
+		System.out.println(" false or true = " + (false || true));
+		System.out.println(" false or false = " + (false || false));
+
+		System.out.println("논리연산 결과 확인하기 : not");
+		System.out.println(" not true = " + !true);    //true 값을 반대(not)값으로 바꿈
+		System.out.println(" not false = " + !false);
+
+		
+		int korean; //국어점수
+		int math; //수학 점수
+		
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("국어점수 입력 ->");
+		korean= sc.nextInt();
+		System.out.println("수학점수 입력 ->");
+		
+		math= sc.nextInt();
+		
+		
+		
+		//국어점수와 수학점수 모두 80점 이상인가? - 모범학생
+		
+		System.out.println("모범학생 ? "+ (korean>=80 && math>=80));
+		
+		//국어점수 또는 수학점수 중 90점 이상이 있는가? - 특기학생
+		System.out.println("특기학생 ? "+ (korean>=90 || math>=90));
+		
+		//국어점수가 20~80이 아닌(not) 학생들은? -> 특이한 학생
+		System.out.println("특이한 학생? "+!(korean>=20 && korean<=80));
+		System.out.println("특이한 학생? "+(korean<20 || korean>80));
+		
+		
+		
+		sc.close();
+		
+		
+	}
+
+}
+
+/*
+ * 데이터의 기본 형식 : Boolean 은 true또는 false 값을 가짐. (Boolean 래퍼 클래스가 있음)
+ * 관계연산 ==(동등, 같음), !=(같지 않음), >, <, >=, <= 이 연산의 결과 값은 boolean 형식임
+ * 논리연산(&&and, ||or, !not)의 결과값도 boolean 형식
+ * 
+ * 참고 : if 나 for에서 필요한 조건식엔 관계연산이 사용됨.
+ * 
+ * 
+ */
+ 
+ package koreait.day03;
+
+import java.util.Scanner;
+
+public class C12_conditionOp {
+// 조건식의 결과에 따라 명령을 선택하는 조건연산자 : 조건식? 값/수식T : 값/수식 F
+	public static void main(String[] args) {
+		
+		int korean; //국어점수
+		int math; //수학 점수
+		
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("국어점수 입력 ->");
+		korean= sc.nextInt();
+		System.out.println("수학점수 입력 ->");
+		
+		math= sc.nextInt();
+		
+		
+		
+		//국어점수와 수학점수 모두 80점 이상인가? - 모범학생
+		
+		System.out.println("모범학생 ? "+ ((korean>=80 && math>=80)?"맞습니다.":"아닙니다."));
+		
+		//국어점수 또는 수학점수 중 90점 이상이 있는가? - 특기학생
+		System.out.println("특기학생 ? "+ ((korean>=90 || math>=90)?"맞습니다.":"아닙니다"));
+
+		//if: 처리할 명령을 제어하는 조건문
+		// { } 는 명령문 블록(block) 이고 여러 개의 명령들을 감싸는 역할의 기호,  
+
+		if(korean>=80 && math>=80) { 
+			// 조건식이 참일 때 실행하는 명령들
+			System.out.println("맞습니다");
+		}
+		
+		else {
+			//조건식이 거짓일 때 실행하는 명령들
+			System.out.println("아닙니다");
+			
+		}
+		// { } 안에 들어가는 명령이 1개일 때는 생락가능
+		if(korean>=90 || math>=90)	
+		System.out.println("맞습니다");
+		else
+		System.out.println("아닙니다");
+		
+		// 프로그램의 처리조건이 else{ }에 해당하는 내용이 없으면 작성을 안해도 됨.
+		if(!(korean>=20 && korean<=80))
+			System.out.println("표준편차 값이 큰 점수입니다.");
+		
+
+		
+		
+		
+		sc.close();
+		
+	}
+
+}
+
+
+package koreait.day03;
+//작성자: 이민호
+import java.util.Scanner;
+
+public class C13_MaxMinEx {
+
+	public static void main(String[] args) {
+		
+		Scanner sc= new Scanner(System.in);
+		
+		int n1;
+		System.out.println("숫자 1 입력:");
+		n1= sc.nextInt();
+		
+		int n2;
+		System.out.println("숫자 2 입력:");
+		n2= sc.nextInt();
+		
+		int n3;
+		System.out.println("숫자 3 입력:");
+		n3= sc.nextInt();
+		
+		if(n1>n2) {
+			if(n1>n3) {
+				System.out.println(n1+"값이 높습니다");
+						}
+			else 
+				System.out.println(n3+"값이 높습니다");
+		}	
+		
+		else {
+			if(n2>n3) {
+				System.out.println(n2+"값이 높습니다");
+			}
+			else 
+				System.out.println(n3+"값이 높습니다");
+			
+			}
+		sc.close();
+
+				}
+}
+
+
+package koreait.day03;
+//작성자: 이민호
+import java.util.Scanner;
+
+public class C13_MaxMinEx2 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc= new Scanner(System.in);
+		
+		int n1, n2, n3;
+		int max;
+		int min;
+		
+		System.out.print("n1>>> ");
+		n1= sc.nextInt();
+		
+		System.out.print("n2>>> ");		
+		n2= sc.nextInt();
+		
+		System.out.print("n3>>> ");
+		n3= sc.nextInt();
+		System.out.printf("n1=%d\t n2=%d\t n3=%d\n", n1, n2, n3);
+		
+		if(n1>n2) {
+			 max= n1;  min= n2;
+		}
+		
+		else {max= n2; min= n1; 
+		}
+		
+		if(max<n3) max= n3;
+		if(min>n3) min= n3;
+		
+		
+		
+		
+		System.out.println("max="+ max+ " , min="+min);
+		
+		sc.close();
+	}
+}
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C14_IfElseIf {
+
+	public static void main(String[] args) {
+		//if(조건식) { .. } else if(조건식) {...} else if(조건식) {...} else if(조건식) {...} ~else
+		
+		/* 마켓컬리 이벤트
+		 * 오늘 구입한 금액이 10만원 이상이면 적립금을 구매 금액의 10%를 줌.
+		 * 10만원보단 적지만 7만원 이상이면 9%
+		 * 4만원 이상이면 7%줌
+		 * 그 이하는 3%
+		 * 
+		 * 
+		 */
+		
+		Scanner sc = new Scanner(System.in);
+		int money; //적립금: %적용하면 결과값은 실수가 될 것-> 정수로 바꿔서 저장할 것
+		int pay;//구매금액
+		double rate; //적립율
+
+		System.out.print("구매금액은 >>>");
+		pay= sc.nextInt();
+		
+		if(pay>=100000) rate= 0.1;
+		else if(pay>=70000) rate= 0.09;
+		else if(pay>=40000)rate= 0.07;
+		else rate= 0.03;
+
+		money= (int)(pay* rate);
+		
+		System.out.printf("고객님! 오늘 구매하신 금액의 적립금 %d 입니다\n ", money);
+		System.out.printf("이벤트기간 적립율 %d %% 적용되었습니다 ", (int)(rate*100));
+		
+
+		sc.close();
+	}
+
+}
+
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C15_CharacterIfTest {
+
+	public static void main(String[] args) {  
+		//문자를 분류합니다.(ascii코드 대문자,소문자,숫자,특수기호)
+
+		int ch1;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("알고싶은 아스키코드 정수값 입력하세요.(32부터 126) -> ");
+		
+		ch1 = sc.nextInt();
+		char ch2 = (char)ch1;		//입력받은 정수값을 char 로 변환.
+		
+		
+		//요구사항 : 정수값에 해당하는 문자와 문자 분류 결과 출력하기.
+		if(ch2 >='A' && ch2 <='Z')  //'A' ~ 'Z' 범위 검사
+			System.out.println("분류 : 대문자 , 입력한 아스키코드값 문자 : " + ch2);
+		
+		else if(ch2 >= 'a' && ch2 <='z')   // 'a' ~ 'z' 범위 검사
+			System.out.println("분류 : 소문자 , 입력한 아스키코드값 문자 : " + ch2);
+		
+		//분류:특수기호 , 범위를 체크해보세요. (문자 또는 코드값) 코드값 32~47,58~64,91~96,123~126
+		
+		else if(ch2>=32 && ch2 <=47 || ch2>=58 && ch2 <=64 || ch2>=91 && ch2 <=96 || ch2>=123 && ch2 <=126)
+			System.out.println("분류 : 기호 , 입력한 아스키코드값 문자 : " + ch2);
+		
+		else if(ch2>=48 && ch2<=57)
+			System.out.println("분류 : 숫자 , 입력한 아스키코드값 문자 : " + ch2);
+			
+		else 
+			System.out.println("분류 : 없음, 알수 없는 문자 :" + ch2);
+		
+		sc.close();
+	}
+}
+
+package koreait.day03;
+
+import java.util.Scanner;
+
+public class C16_SwitchTest {
+
+	public static void main(String[] args) {
+		//switch 문은 if, else if를 대신하는 명령문
+		
+		Scanner sc= new Scanner(System.in);
+		
+		int item_no;
+		int pay=0;
+		
+		System.out.println("상품목록 1.2200원🍕🍕   2.1900원🍗🍗   3.3600원🍺🍺   4.2870원🍌🍌 ");   
+		System.out.print("상품을 선택해 장바구니에 넣으세요 >>>");
+		item_no = sc.nextInt();
+
+		
+		switch (item_no) { //if문에서 조건식 작성했을 때와 같이 비교할 변수
+		case 1: 		//검사할 값
+			pay= 2200;
+			break; //아래의 명령문들은 실행하지 않고 Switch문을 끝내기
+		case 2:
+			pay= 1900;
+			break;
+		case 3:
+			pay= 3600;
+			break;
+		case 4:
+			pay=2870;
+			break;
+
+		default:
+			System.out.println("상품선택이 잘못되었습니다.");
+			pay=99999;
+			break;
+		} 
+		
+		
+		System.out.println("결제 금액 "+ pay + " 원 입니다");
+		
+		
+		//위의 switch문을 if else if 로 바꿔 실행하기
+		if(item_no == 1) pay= 2200;
+		else if(item_no==2) pay= 1900;
+		else if(item_no==3) pay= 3600;
+		else if(item_no==4) pay= 2870;
+		else {pay=99999; System.out.println("상품선택이 잘못되었습니다.");}
+			System.out.println("결제 금액 "+ pay + " 원 입니다");
+			
+		
+		sc.close();
+	}
+
+}
